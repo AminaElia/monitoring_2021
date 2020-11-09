@@ -37,5 +37,31 @@ plot(cadmium, lead)
 
 # Exercice: pairing only the elements part of the dataset: how to do that? cadmium, copper, lead, zinc
 
+# Lecture 2!!
+library(sp)
+data(meuse)
+
+pairs(meuse)
+
+head(meuse)
+
+# cadimium copper lead zinc
+# pairs with soil variables
+# from column 3 to column 6
+pairs([,3:6])
+# non funzionava quindi si usa dev.off() e poi ri incolla il comando
+pairs(~cadmium+copper+lead+zinc, data=meuse)
+# è un altro modo per ottenere la stessa cosa.
+
+# Let's prettify the graph
+# Exercice: change the color
+pairs(~cadmium+copper+lead+zinc, data=meuse, col="green")
+# change the symbol to filled triangles
+pairs(~cadmium+copper+lead+zinc, data=meuse, col="green", pch=17)
+# increase the size of triangles
+pairs(~cadmium+copper+lead+zinc, data=meuse, col="green", pch=17, cex=3)
+
+
+
 
 
