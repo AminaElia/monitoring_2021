@@ -59,5 +59,24 @@ ggplot(d, aes(x = biofuels, y = oydative)) + geom_polygon()
 # setwd("path/Lab")
 
  setwd("/Users/Amina/Desktop/Lab")
+# set working directory
+
+covid <- read.table("covid_agg.csv", header=TRUE)
+#header dice se il file contiene il nome delle variabili, in questo caso ci sono quindi metto TRUE
+# ho usato view.php.cvs xk il file mi si è salvato cosi
+head(covid)
+summary(covid)
+
+#ggplot
+library(ggplot2)
+
+ggplot(covid, aes(x = lon, y = lat)) + geom_point()
+# names(covid) per vedere i nomi delle variabili da inserire, in questo caso lon e lat così ci esce un plot a forma di mondo (astratto)
+
+#changing the size of the data points in relation to the number of cases
+ggplot(covid, aes(x = lon, y = lat, size = cases)) + geom_point()
+
+
+
 
 
