@@ -26,3 +26,40 @@ plot(density_map, col = cla)
 
 install.packages("rgdal")
 
+library(rgdal)
+
+coastlines <- readOGR("ne_10m_coastline.shp")
+
+plot(density_map, col = cl)
+points (covid_planar, pch = 16, cex = 0.1) #pch x forma dei pallini, cex per grandezza
+plot(coastlines, add = TRUE) #per mettere la mappa del mondo sulla carta delle sfumature
+
+# to save the map:
+png("figure1.png")
+plot(density_map, col = cl)
+points (covid_planar, pch = 16, cex = 0.1) 
+plot(coastlines, add = TRUE)
+dev.off()
+
+# si può anche fare in pdfusando il comando pdf("") al posto di png, mettere sempre dev.off() alla fine
+#pdf is the best
+
+head(covid)
+
+# interpolation
+marks(covid_planar) <- cases #cases è la colonna da cui prendiamo i dati
+cases_map <- Smooth(covid_planar)
+
+plot(cases_map, col = cl)
+plot(coastalines, add = TRUE)
+points(covid_planar)
+
+#plot(cases_map, col = cl)
+#points(covid_planar)
+#plot(coastlines, add = T)
+
+
+
+
+
+
