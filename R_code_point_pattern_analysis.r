@@ -59,6 +59,10 @@ points(covid_planar)
 #plot(coastlines, add = T)
 
 
+#########
+# plotting points with different size relate to covid data toghether with the interpolation
+
+setwd()
 
 
 
