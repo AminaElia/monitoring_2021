@@ -64,6 +64,30 @@ points(covid_planar)
 
 setwd()
 
+#### ATTENTION L'ultima volta ho perso alcune cose, recupererare
+
+# Leonardo Zabotti data
+
+setwd()
+
+leo <- read.table("dati_zabotti.csv", header = T, sep=",")
+head(leo)
+
+attach(leo)
+
+library(spatstat)
+
+summary(leo) #per vedere i min e max di x e y
+
+leo_ppp <- ppp(x, y, c(2300000, 2325000), c(5005000, 5045000))
+##mi da errore...
+
+plot(leo)
+
+density_map <- density(leo_ppp)
+plot(density_map)
+points(leo_ppp)
+
 
 
 
