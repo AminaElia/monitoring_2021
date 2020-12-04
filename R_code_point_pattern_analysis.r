@@ -79,7 +79,7 @@ library(spatstat)
 
 summary(leo) #per vedere i min e max di x e y
 
-leo_ppp <- ppp(x, y, c(2300000, 2325000), c(5005000, 5045000))
+leo_ppp <- ppp(leo$x, leo$y, c(2300000, 2325000), c(5005000, 5045000))
 ##mi da errore...
 
 plot(leo)
@@ -87,6 +87,58 @@ plot(leo)
 density_map <- density(leo_ppp)
 plot(density_map)
 points(leo_ppp)
+
+
+### Interpolation 
+
+setwd()
+
+load("point_pattern_analysis.RData")
+ls() #list of files inside the dataset
+
+library(spatstat)
+attach(leo)
+marks(leo_ppp) <- chlh
+chlh_map <- Smooth(leo_ppp)
+cl <- colorRampPalette(c('yellow','orange','red','green'))(100) # 
+plot(chlh_map, col=cl)
+points(leo_ppp)
+
+# chlorophyl in the sediments
+marks(leo_ppp) <- chls
+chls_map <- Smooth(leo_ppp)
+plot(chls_map)
+points(leo_ppp)
+
+# multipanel  Per avere tre mappe assieme!
+par(mfrow=c(1,3))
+
+#first graph: density map
+plot(density_map, col=cl)
+points(leo_ppp)
+
+# second graph
+plot(chlh_map, col=cl)
+points(leo_ppp)
+
+# third graph
+plot(chls_map, col=cl)
+points(leo_ppp)
+
+# build a multipanel with 3 rows and 1 column, cioè mappe posizionate in verticale, una sopra l'altra
+par(mfrow=c(3,1))
+#first graph: density map
+plot(density_map, col=cl)
+points(leo_ppp)
+
+# second graph
+plot(chlh_map, col=cl)
+points(leo_ppp)
+
+# third graph
+plot(chls_map, col=cl)
+points(leo_ppp)
+
 
 
 
