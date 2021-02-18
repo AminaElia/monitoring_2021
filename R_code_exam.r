@@ -1,4 +1,4 @@
-####Title
+#### Thermal Amplitude - land surface temperatures
 
 
 # set working directory (mac)
