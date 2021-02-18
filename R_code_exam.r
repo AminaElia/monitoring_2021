@@ -79,6 +79,7 @@ plot(t2af, col=cl1, main="Temperatures in Europe (00 am, jan 20 2021)")
 difaf <- crop(dif, af)
 plot(difaf, col=cl2, main="Thermic amplitude in Africa")
 # plot all africa's plot togheter
+par(mfrow=c(1,3))
 plot(t1af, col=cl1, main="Temperatures in Africa (12 am, jan 19 2021)")
 plot(t2af, col=cl1, main="Temperatures in Europe (00 am, jan 20 2021)")
 plot(difaf, col=cl2, main="Thermic amplitude in Africa")
